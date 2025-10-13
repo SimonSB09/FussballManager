@@ -1,11 +1,11 @@
-object FGUIForm_1: TFXGUIForm
+object FGUIForm: TFXGUIForm
   Tag = 180
-  Left = 876
-  Top = 228
+  Left = 944
+  Top = 187
   BorderIcons = [biSystemMenu]
-  Caption = 'Renderer'
-  ClientHeight = 517
-  ClientWidth = 443
+  Caption = 'example'
+  ClientHeight = 223
+  ClientWidth = 268
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -28,7 +28,7 @@ object FGUIForm_1: TFXGUIForm
   Resizable = True
   Undecorated = False
   Background = clBtnFace
-  Title = 'Renderer'
+  Title = 'example'
   FontSize = 11
   X = 0
   Y = 0
@@ -43,8 +43,8 @@ object FGUIForm_1: TFXGUIForm
   TextHeight = 15
   object menuButton1: TFXMenuButton
     Tag = 118
-    Left = 88
-    Top = 80
+    Left = 32
+    Top = 40
     Width = 80
     Height = 24
     Hint = 'menuButton1'
@@ -56,51 +56,8 @@ object FGUIForm_1: TFXGUIForm
     Foreground = clBlack
     Background = clBtnFace
     JavaType = 'MenuButton'
-    LayoutX = 88
-    LayoutY = 80
-    Disable = False
-    Cache = False
-    dragOver = ''
-    PrefHeight = 24
-    PrefWidth = 80
-    SnapToPixel = False
-    Alignment = CENTER_LEFT
-    ContentDisplay = _CD_LEFT
-    EllipsisString = '...'
-    Underline = False
-    TextFill = 3355443
-    GraphicTextGap = 4
-    MnemonicParsing = False
-    Text = 'Test'
-    TextAlignment = _TA_LEFT
-    WrapText = False
-    action = ''
-    MenuItems.Strings = (
-      'Copy'
-      '  Numbered'
-      '  RTF'
-      '-'
-      'Print'
-      'Save')
-    PopupSide = BOTTOM
-  end
-  object menuButton2: TFXMenuButton
-    Tag = 118
-    Left = 200
-    Top = 72
-    Width = 80
-    Height = 24
-    Hint = 'menuButton2'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -15
-    Font.Name = 'Dialog'
-    Font.Style = []
-    Foreground = clBlack
-    Background = clBtnFace
-    JavaType = 'MenuButton'
-    LayoutX = 200
-    LayoutY = 72
+    LayoutX = 32
+    LayoutY = 40
     Disable = False
     Cache = False
     dragOver = ''

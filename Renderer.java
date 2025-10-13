@@ -7,6 +7,8 @@ import javafx.event.Event;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.scene.input.KeyCombination;
+import javafx.cene.*;
+import javafx.geometry.Insets;
 
 /**
  *
@@ -22,12 +24,15 @@ public class Renderer extends Application {
   Fussballfreundschaftsspiel game;
   private Mannschaft teamA;
   private Mannschaft teamB;
+  private Spieler currentPlayer;
   
   private MenuItem[] teamAItems;
   private MenuItem[] teamBItems;
   
   private MenuButton teamADropDown = new MenuButton();
   private MenuButton teamBDropDown = new MenuButton();
+  private Label playerCardA = new Label();
+  private Label playerCardB = new Label();
   
   // end attributes
   @Override
@@ -36,7 +41,7 @@ public class Renderer extends Application {
     Scene scene = new Scene(root, 443, 518);
     // start components
     
-    teamADropDown.setLayoutX(400);
+    teamADropDown.setLayoutX(300);
     teamADropDown.setLayoutY(80);
     teamADropDown.setFont(Font.font("Dialog", 11));
     teamADropDown.setText(teamA.getName());
@@ -46,6 +51,12 @@ public class Renderer extends Application {
     teamBDropDown.setFont(Font.font("Dialog", 11));
     teamBDropDown.setText(teamB.getName());
         
+    playerCardA.setLayoutX(10);
+    playerCardA.setLayoutY(200);
+    playerCardA.setFont(Font.font("Dialog", 11));
+    playerCardA.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0), new CornerRadii(1.0f), new Insets(1.0f))));
+    playerCardA.setText("[NO PLAYE SELECTED YET]");
+     
     for (int i = 0; i < teamAItems.length; ++i)
     {                                                                                                                                           
         teamADropDown.getItems().add(teamAItems[i]);
@@ -54,10 +65,30 @@ public class Renderer extends Application {
     {
         teamBDropDown.getItems().add(teamBItems[i]);
     }
+    
+    for (int i = 0; i < teamAItems.length; ++i) 
+    {
+        final int j = i;
+        teamAItems[i].setOnAction((event) ->
+        {
+         currentPlayer = teamA.getKader()[j];
+         updatePlayerCard(currentPlayer, playerCardA);
+        });
+    }   
+    for (int i = 0; i < teamBItems.length; ++i) 
+    {
+        final int j = i;
+        teamBItems[i].setOnAction((event) ->
+        {
+         currentPlayer = teamB.getKader()[j];
+         updatePlayerCard(currentPlayer, playerCardB);
+        });
+    } 
         
     root.getChildren().add(teamADropDown);
     root.getChildren().add(teamBDropDown);
-    
+    root.getChildren().add(currentPlayerCard);
+        
     // end components
     
     primaryStage.setOnCloseRequest(e -> System.exit(0));
@@ -134,7 +165,16 @@ public class Renderer extends Application {
     launch(args);
   } // end of main
   
-
+  public void updatePlayerCard(Spieler newPlayer, Label playerCard)
+  {
+     String text = "";
+     text += "Name: " + newPlayer.getName() + "\n";
+     text += "Alter: " + newPlayer.getAlter() + "\n";
+     text += "Stärke: " + Integer.toString(newPlayer.getStaerke()) + "\n";
+     text += "Torschuss: " + Integer.toString(newPlayer.getTorschuss()) + "\n";
+     text += "Motivation: " + Integer.toString(newPlayer.getMotivation()) + "\n";
+     playerCard.setText(text);
+  }
 
    // end methods
 } // end of class Renderer
