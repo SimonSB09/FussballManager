@@ -1,0 +1,132 @@
+object FGUIForm: TFXGUIForm
+  Tag = 180
+  Left = 876
+  Top = 228
+  BorderIcons = [biSystemMenu]
+  Caption = 'Renderer'
+  ClientHeight = 517
+  ClientWidth = 443
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  Position = poDesigned
+  Visible = True
+  OnActivate = FormActivate
+  OnAfterMonitorDpiChanged = FormAfterMonitorDpiChanged
+  OnBeforeMonitorDpiChanged = FormBeforeMonitorDpiChanged
+  OnCanResize = FormCanResize
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  OnMouseActivate = FormMouseActivate
+  OnResize = FormResize
+  Resizable = True
+  Undecorated = False
+  Background = clBtnFace
+  Title = 'Renderer'
+  FontSize = 11
+  X = 0
+  Y = 0
+  FullScreen = False
+  AlwaysOnTop = False
+  Iconified = False
+  MaxHeight = 0
+  MaxWidth = 0
+  MinHeight = 0
+  MinWidth = 0
+  showing = ''
+  TextHeight = 15
+  object menuButton1: TFXMenuButton
+    Tag = 118
+    Left = 88
+    Top = 80
+    Width = 80
+    Height = 24
+    Hint = 'menuButton1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Dialog'
+    Font.Style = []
+    Foreground = clBlack
+    Background = clBtnFace
+    JavaType = 'MenuButton'
+    LayoutX = 88
+    LayoutY = 80
+    Disable = False
+    Cache = False
+    dragOver = ''
+    PrefHeight = 24
+    PrefWidth = 80
+    SnapToPixel = False
+    Alignment = CENTER_LEFT
+    ContentDisplay = _CD_LEFT
+    EllipsisString = '...'
+    Underline = False
+    TextFill = 3355443
+    GraphicTextGap = 4
+    MnemonicParsing = False
+    Text = 'Test'
+    TextAlignment = _TA_LEFT
+    WrapText = False
+    action = ''
+    MenuItems.Strings = (
+      'Copy'
+      '  Numbered'
+      '  RTF'
+      '-'
+      'Print'
+      'Save')
+    PopupSide = BOTTOM
+  end
+  object menuButton2: TFXMenuButton
+    Tag = 118
+    Left = 200
+    Top = 72
+    Width = 80
+    Height = 24
+    Hint = 'menuButton2'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Dialog'
+    Font.Style = []
+    Foreground = clBlack
+    Background = clBtnFace
+    JavaType = 'MenuButton'
+    LayoutX = 200
+    LayoutY = 72
+    Disable = False
+    Cache = False
+    dragOver = ''
+    PrefHeight = 24
+    PrefWidth = 80
+    SnapToPixel = False
+    Alignment = CENTER_LEFT
+    ContentDisplay = _CD_LEFT
+    EllipsisString = '...'
+    Underline = False
+    TextFill = 3355443
+    GraphicTextGap = 4
+    MnemonicParsing = False
+    Text = ''
+    TextAlignment = _TA_LEFT
+    WrapText = False
+    action = ''
+    MenuItems.Strings = (
+      'Copy'
+      '  Numbered'
+      '  RTF'
+      '-'
+      'Print'
+      'Save')
+    PopupSide = BOTTOM
+  end
+  object GNUgettextMarker: TGnuGettextComponentMarker
+  end
+end

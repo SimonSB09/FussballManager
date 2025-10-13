@@ -1,0 +1,57 @@
+﻿[Files]
+File0=Spieler.java
+File1=FussballTestKlasse.java
+File2=Fussballfreundschaftsspiel.java
+File3=Freundschaftsspiel.java
+
+[Box:  - Freundschaftsspiel]
+X=405
+Y=297
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Box:  - Fussballfreundschaftsspiel]
+X=358
+Y=40
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Box:  - FussballTestKlasse]
+X=20
+Y=474
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Box:  - Spieler]
+X=235
+Y=297
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Diagram]
+Comments=0
+OffsetX=0
+OffsetY=0
+Visibility=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+ShowConnections=0
+Fontname=Segoe UI
+Fontsize=10
+ShowObjectDiagram=0
+
+[Connections]
+V0=Fussballfreundschaftsspiel#Freundschaftsspiel#Implements####0#0#0###0#0
+
+[FInteractive]
+I0=
+

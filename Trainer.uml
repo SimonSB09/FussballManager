@@ -1,0 +1,97 @@
+﻿[Files]
+File0=Trainer.java
+File1=Torwart.java
+File2=Spieler.java
+File3=Person.java
+File4=Mannschaft.java
+File5=FussballTestKlasse.java
+File6=Fussballfreundschaftsspiel.java
+File7=Freundschaftsspiel.java
+
+[Box:  - Freundschaftsspiel]
+X=970
+Y=141
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Box:  - Fussballfreundschaftsspiel]
+X=645
+Y=100
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Box:  - FussballTestKlasse]
+X=852
+Y=12
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Box:  - Mannschaft]
+X=244
+Y=58
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Box:  - Person]
+X=355
+Y=547
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Box:  - Spieler]
+X=605
+Y=357
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Box:  - Torwart]
+X=258
+Y=399
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Box:  - Trainer]
+X=32
+Y=407
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+
+[Diagram]
+Comments=0
+OffsetX=0
+OffsetY=0
+Visibility=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=0
+ShowConnections=0
+Fontname=Segoe UI
+Fontsize=10
+ShowObjectDiagram=0
+
+[Connections]
+V0=Mannschaft#Trainer#Aggregation####0#0#-1###0#0
+V1=Mannschaft#Torwart#Aggregation####0#0#-1###0#0
+V2=Fussballfreundschaftsspiel#Mannschaft#AssociationDirected####0#0#-1###0#0
+V3=Fussballfreundschaftsspiel#Freundschaftsspiel#Implements####0#0#0###0#0
+V4=Mannschaft#Spieler#Aggregation####0#0#0###0#0
+V5=Spieler#Person#Inheritends####0#0#0###0#0
+V6=Torwart#Spieler#Inheritends####0#0#0###0#0
+V7=Trainer#Person#Inheritends####0#0#0###0#0
+
