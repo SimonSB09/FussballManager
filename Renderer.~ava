@@ -25,7 +25,8 @@ import javafx.scene.layout.CornerRadii;
  * @author 
  */
 
-public class Renderer extends Application {
+public class Renderer extends Application 
+{
   
   // start attributes
   Fussballfreundschaftsspiel game;
@@ -192,17 +193,52 @@ public class Renderer extends Application {
   
   public void updatePlayerCard(Spieler newPlayer, VBox playerCard)
   {
-     Label label = new Label();
-     String text = "";
-     text += "Name: " + newPlayer.getName() + "\n";
-     text += "Alter: " + newPlayer.getAlter() + "\n";
-     text += "Stärke: " + Integer.toString(newPlayer.getStaerke()) + "\n";
-     text += "Torschuss: " + Integer.toString(newPlayer.getTorschuss()) + "\n";
-     text += "Motivation: " + Integer.toString(newPlayer.getMotivation()) + "\n";
-     label.setText(text);
-     
-     playerCard.getChildren().clear();
-     playerCard.getChildren().add(label);
+         HBox nameBox = new HBox();
+         nameBox.setSpacing(10);
+         nameBox.setPadding(new Insets(15));
+         Label nameLabel = new Label("Alter");
+         TextField nameInput = new TextField(newPlayer.getName());
+         nameBox.getChildren().addAll(nameLabel, nameInput);
+         
+         HBox alterBox = new HBox();
+         nameBox.setSpacing(10);
+         nameBox.setPadding(new Insets(15));
+         Label alterLabel = new Label("Alter");
+         TextField alterInput = new TextField(Integer.toString(newPlayer.getAlter()));
+         alterBox.getChildren().addAll(alterLabel, alterInput);
+         
+         //HBox nameBox = new HBox();
+         //nameBox.setSpacing(10);
+         //nameBox.setPadding(new Insets(15));
+         //Label nameLabel = new Label("Name");
+         //TextField nameInput = new TextField(newPlayer.getName());
+         //nameBox.getChildren().addAll(nameLabel, nameInput);
+         //
+         //HBox nameBox = new HBox();
+         //nameBox.setSpacing(10);
+         //nameBox.setPadding(new Insets(15));
+         //Label nameLabel = new Label("Name");
+         //TextField nameInput = new TextField(newPlayer.getName());
+         //nameBox.getChildren().addAll(nameLabel, nameInput);
+         //
+         //HBox nameBox = new HBox();
+         //nameBox.setSpacing(10);
+         //nameBox.setPadding(new Insets(15));
+         //Label nameLabel = new Label("Name");
+         //TextField nameInput = new TextField(newPlayer.getName());
+         //nameBox.getChildren().addAll(nameLabel, nameInput);
+                  
+         //String text = "";
+         //text += "Name: " + newPlayer.getName() + "\n";
+         //text += "Alter: " + newPlayer.getAlter() + "\n";
+         //text += "Stärke: " + Integer.toString(newPlayer.getStaerke()) + "\n";
+         //text += "Torschuss: " + Integer.toString(newPlayer.getTorschuss()) + "\n";
+         //text += "Motivation: " + Integer.toString(newPlayer.getMotivation()) + "\n";
+         //label.setText(text);
+         
+         playerCard.getChildren().clear();        //TODO: make this more efficient
+         playerCard.getChildren().add(nameBox);
+         playerCard.getChildren().add(alterBox);
   }
 
 

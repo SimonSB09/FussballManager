@@ -129,8 +129,6 @@ public class Renderer extends Application
   @Override
   public void init()
   {
-   System.out.println("Calling init!");
-   
    // **********************************************************************
     // Mannschaft 1
     Trainer t1     = new Trainer("Juergen Klinsmann", 34, 9);
@@ -196,7 +194,7 @@ public class Renderer extends Application
          HBox nameBox = new HBox();
          nameBox.setSpacing(10);
          nameBox.setPadding(new Insets(15));
-         Label nameLabel = new Label("Alter");
+         Label nameLabel = new Label("Name");
          TextField nameInput = new TextField(newPlayer.getName());
          nameBox.getChildren().addAll(nameLabel, nameInput);
          
@@ -207,12 +205,12 @@ public class Renderer extends Application
          TextField alterInput = new TextField(Integer.toString(newPlayer.getAlter()));
          alterBox.getChildren().addAll(alterLabel, alterInput);
          
-         //HBox nameBox = new HBox();
-         //nameBox.setSpacing(10);
-         //nameBox.setPadding(new Insets(15));
-         //Label nameLabel = new Label("Name");
-         //TextField nameInput = new TextField(newPlayer.getName());
-         //nameBox.getChildren().addAll(nameLabel, nameInput);
+         HBox nameBox = new HBox();
+         nameBox.setSpacing(10);
+         nameBox.setPadding(new Insets(15));
+         Label nameLabel = new Label("Name");
+         TextField nameInput = new TextField(newPlayer.getName());
+         nameBox.getChildren().addAll(nameLabel, nameInput);
          //
          //HBox nameBox = new HBox();
          //nameBox.setSpacing(10);
@@ -237,7 +235,7 @@ public class Renderer extends Application
          //label.setText(text);
          
          playerCard.getChildren().clear();        //TODO: make this more efficient
-         playerCard.getChildren().add(nameBox);
+         playerCard.getChildren().add(nameBox);   //TODO: add input callbacks
          playerCard.getChildren().add(alterBox);
   }
 
