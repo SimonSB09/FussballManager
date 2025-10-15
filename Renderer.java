@@ -54,7 +54,7 @@ public class Renderer extends Application
   @Override
   public void start(Stage primaryStage) { 
     Pane root = new Pane();
-    Scene scene = new Scene(root, 443, 518);
+    Scene scene = new Scene(root);
     // start components
     
     teamADropDown.setLayoutX(dropDownAX);
@@ -202,29 +202,29 @@ public class Renderer extends Application
          nameBox.setSpacing(10);
          nameBox.setPadding(new Insets(15));
          Label alterLabel = new Label("Alter");
-         TextField alterInput = new TextField(Integer.toString(newPlayer.getAlter()));
+         Spinner<Integer> alterInput = new Spinner(0, 100, newPlayer.getAlter());
          alterBox.getChildren().addAll(alterLabel, alterInput);
          
-         HBox nameBox = new HBox();
+         HBox staerkeBox = new HBox();
          nameBox.setSpacing(10);
          nameBox.setPadding(new Insets(15));
-         Label nameLabel = new Label("Name");
-         TextField nameInput = new TextField(newPlayer.getName());
-         nameBox.getChildren().addAll(nameLabel, nameInput);
-         //
-         //HBox nameBox = new HBox();
-         //nameBox.setSpacing(10);
-         //nameBox.setPadding(new Insets(15));
-         //Label nameLabel = new Label("Name");
-         //TextField nameInput = new TextField(newPlayer.getName());
-         //nameBox.getChildren().addAll(nameLabel, nameInput);
-         //
-         //HBox nameBox = new HBox();
-         //nameBox.setSpacing(10);
-         //nameBox.setPadding(new Insets(15));
-         //Label nameLabel = new Label("Name");
-         //TextField nameInput = new TextField(newPlayer.getName());
-         //nameBox.getChildren().addAll(nameLabel, nameInput);
+         Label staerkeLabel = new Label("Stärke");
+         Spinner<Integer> staerkeInput = new Spinner(0, 10, newPlayer.getStaerke());
+         staerkeBox.getChildren().addAll(staerkeLabel, staerkeInput);
+         
+        //HBox nameBox = new HBox();
+        //nameBox.setSpacing(10);
+        //nameBox.setPadding(new Insets(15));
+        //Label nameLabel = new Label("Name");
+        //TextField nameInput = new TextField(newPlayer.getName());
+        //nameBox.getChildren().addAll(nameLabel, nameInput);
+        //
+        //HBox nameBox = new HBox();
+        //nameBox.setSpacing(10);
+        //nameBox.setPadding(new Insets(15));
+        //Label nameLabel = new Label("Name");
+        //TextField nameInput = new TextField(newPlayer.getName());
+        //nameBox.getChildren().addAll(nameLabel, nameInput);
                   
          //String text = "";
          //text += "Name: " + newPlayer.getName() + "\n";
@@ -237,6 +237,7 @@ public class Renderer extends Application
          playerCard.getChildren().clear();        //TODO: make this more efficient
          playerCard.getChildren().add(nameBox);   //TODO: add input callbacks
          playerCard.getChildren().add(alterBox);
+         playerCard.getChildren().add(staerkeBox);
   }
 
 
