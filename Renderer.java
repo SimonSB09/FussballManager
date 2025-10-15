@@ -1,14 +1,21 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.event.Event;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
 import javafx.scene.input.KeyCombination;
-import javafx.cene.*;
+import javafx.scene.*;
+import javafx.collections.*;
+
+//all this just to set the damn fucking background color
+import javafx.scene.paint.Color;         
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.geometry.Insets;
+import javafx.scene.layout.CornerRadii;
 
 /**
  *
@@ -18,22 +25,31 @@ import javafx.geometry.Insets;
  * @author 
  */
 
-public class Renderer extends Application {
-  // start attributes
+public class Renderer extends Application 
+{
   
+  // start attributes
   Fussballfreundschaftsspiel game;
   private Mannschaft teamA;
   private Mannschaft teamB;
-  private Spieler currentPlayer;
+  
+  private Color playerCardColor = Color.rgb(166, 177, 181);
+  private float dropDownsY = 80.0f;
+  private float dropDownAX = 10.0f;
+  private float dropDownBX = 300.0f;
+  private float playerCardsY = 200.0f;
+  
+  private MenuButton teamADropDown = new MenuButton();
+  private MenuButton teamBDropDown = new MenuButton();
   
   private MenuItem[] teamAItems;
   private MenuItem[] teamBItems;
   
-  private MenuButton teamADropDown = new MenuButton();
-  private MenuButton teamBDropDown = new MenuButton();
-  private Label playerCardA = new Label();
-  private Label playerCardB = new Label();
+  private VBox playerCardA = new VBox();
+  private VBox playerCardB = new VBox();
   
+  private MenuButton menuButton1 = new MenuButton();
+  private Spinner<Integer> spinner1 = new Spinner<>(0, 10, 0, 1);
   // end attributes
   @Override
   public void start(Stage primaryStage) { 
@@ -41,21 +57,32 @@ public class Renderer extends Application {
     Scene scene = new Scene(root, 443, 518);
     // start components
     
-    teamADropDown.setLayoutX(300);
-    teamADropDown.setLayoutY(80);
+    teamADropDown.setLayoutX(dropDownAX);
+    teamADropDown.setLayoutY(dropDownsY);
     teamADropDown.setFont(Font.font("Dialog", 11));
     teamADropDown.setText(teamA.getName());
     
-    teamBDropDown.setLayoutX(10);
-    teamBDropDown.setLayoutY(80);
+    teamBDropDown.setLayoutX(dropDownBX);
+    teamBDropDown.setLayoutY(dropDownsY);
     teamBDropDown.setFont(Font.font("Dialog", 11));
     teamBDropDown.setText(teamB.getName());
         
-    playerCardA.setLayoutX(10);
-    playerCardA.setLayoutY(200);
-    playerCardA.setFont(Font.font("Dialog", 11));
-    playerCardA.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0), new CornerRadii(1.0f), new Insets(1.0f))));
-    playerCardA.setText("[NO PLAYE SELECTED YET]");
+    playerCardA.setLayoutX(dropDownAX);
+    playerCardA.setLayoutY(playerCardsY);
+    playerCardA.setBackground(new Background(new BackgroundFill(playerCardColor, new CornerRadii(0.0f), new Insets(0.0f))));
+    playerCardA.setSpacing(10);
+    playerCardA.setPadding(new Insets(15));
+    
+    updatePlayerCard(teamA.getKader()[0], playerCardA);
+    
+    
+    playerCardB.setLayoutX(dropDownBX);
+    playerCardB.setLayoutY(playerCardsY);
+    playerCardB.setBackground(new Background(new BackgroundFill(playerCardColor, new CornerRadii(0.0f), new Insets(0.0f))));
+    playerCardB.setSpacing(10);
+    playerCardB.setPadding(new Insets(15));
+
+    updatePlayerCard(teamB.getKader()[0], playerCardB);
      
     for (int i = 0; i < teamAItems.length; ++i)
     {                                                                                                                                           
@@ -71,8 +98,7 @@ public class Renderer extends Application {
         final int j = i;
         teamAItems[i].setOnAction((event) ->
         {
-         currentPlayer = teamA.getKader()[j];
-         updatePlayerCard(currentPlayer, playerCardA);
+         updatePlayerCard(teamA.getKader()[j], playerCardA);
         });
     }   
     for (int i = 0; i < teamBItems.length; ++i) 
@@ -80,26 +106,26 @@ public class Renderer extends Application {
         final int j = i;
         teamBItems[i].setOnAction((event) ->
         {
-         currentPlayer = teamB.getKader()[j];
-         updatePlayerCard(currentPlayer, playerCardB);
+         updatePlayerCard(teamB.getKader()[j], playerCardB);
         });
     } 
         
     root.getChildren().add(teamADropDown);
     root.getChildren().add(teamBDropDown);
-    root.getChildren().add(currentPlayerCard);
-        
-    // end components
+    root.getChildren().add(playerCardA);
+    root.getChildren().add(playerCardB);
     
+    
+    // end components
     primaryStage.setOnCloseRequest(e -> System.exit(0));
     primaryStage.setTitle("Renderer");
     primaryStage.setScene(scene);
     primaryStage.show();
   } // end of public Renderer
   
+  
+  
   // start methods
-  
-  
   @Override
   public void init()
   {
@@ -165,16 +191,56 @@ public class Renderer extends Application {
     launch(args);
   } // end of main
   
-  public void updatePlayerCard(Spieler newPlayer, Label playerCard)
+  public void updatePlayerCard(Spieler newPlayer, VBox playerCard)
   {
-     String text = "";
-     text += "Name: " + newPlayer.getName() + "\n";
-     text += "Alter: " + newPlayer.getAlter() + "\n";
-     text += "Stärke: " + Integer.toString(newPlayer.getStaerke()) + "\n";
-     text += "Torschuss: " + Integer.toString(newPlayer.getTorschuss()) + "\n";
-     text += "Motivation: " + Integer.toString(newPlayer.getMotivation()) + "\n";
-     playerCard.setText(text);
+         HBox nameBox = new HBox();
+         nameBox.setSpacing(10);
+         nameBox.setPadding(new Insets(15));
+         Label nameLabel = new Label("Alter");
+         TextField nameInput = new TextField(newPlayer.getName());
+         nameBox.getChildren().addAll(nameLabel, nameInput);
+         
+         HBox alterBox = new HBox();
+         nameBox.setSpacing(10);
+         nameBox.setPadding(new Insets(15));
+         Label alterLabel = new Label("Alter");
+         TextField alterInput = new TextField(Integer.toString(newPlayer.getAlter()));
+         alterBox.getChildren().addAll(alterLabel, alterInput);
+         
+         //HBox nameBox = new HBox();
+         //nameBox.setSpacing(10);
+         //nameBox.setPadding(new Insets(15));
+         //Label nameLabel = new Label("Name");
+         //TextField nameInput = new TextField(newPlayer.getName());
+         //nameBox.getChildren().addAll(nameLabel, nameInput);
+         //
+         //HBox nameBox = new HBox();
+         //nameBox.setSpacing(10);
+         //nameBox.setPadding(new Insets(15));
+         //Label nameLabel = new Label("Name");
+         //TextField nameInput = new TextField(newPlayer.getName());
+         //nameBox.getChildren().addAll(nameLabel, nameInput);
+         //
+         //HBox nameBox = new HBox();
+         //nameBox.setSpacing(10);
+         //nameBox.setPadding(new Insets(15));
+         //Label nameLabel = new Label("Name");
+         //TextField nameInput = new TextField(newPlayer.getName());
+         //nameBox.getChildren().addAll(nameLabel, nameInput);
+                  
+         //String text = "";
+         //text += "Name: " + newPlayer.getName() + "\n";
+         //text += "Alter: " + newPlayer.getAlter() + "\n";
+         //text += "Stärke: " + Integer.toString(newPlayer.getStaerke()) + "\n";
+         //text += "Torschuss: " + Integer.toString(newPlayer.getTorschuss()) + "\n";
+         //text += "Motivation: " + Integer.toString(newPlayer.getMotivation()) + "\n";
+         //label.setText(text);
+         
+         playerCard.getChildren().clear();        //TODO: make this more efficient
+         playerCard.getChildren().add(nameBox);
+         playerCard.getChildren().add(alterBox);
   }
 
-   // end methods
-} // end of class Renderer
+
+  // end methods
+}

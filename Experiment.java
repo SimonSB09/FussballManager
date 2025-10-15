@@ -3,19 +3,22 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCombination;
 import javafx.event.Event;
+import je.NumberField;
+import javafx.scene.text.*;
+import javafx.scene.text.Font;
 
 /**
  *
  * Beschreibung
  *
- * @version 1.0 vom 13.10.2025
+ * @version 1.0 vom 15.10.2025
  * @author 
  */
 
 public class Experiment extends Application {
   // start attributes
+  private NumberField numberField1 = new NumberField();
   // end attributes
   
   public void start(Stage primaryStage) { 
@@ -23,7 +26,12 @@ public class Experiment extends Application {
     Scene scene = new Scene(root, 284, 262);
     // start components
     
-
+    numberField1.setLayoutX(32);
+    numberField1.setLayoutY(48);
+    numberField1.setPrefHeight(24);
+    numberField1.setPrefWidth(80);
+    numberField1.setFont(Font.font("Dialog", 11));
+    root.getChildren().add(numberField1);
     // end components
     
     primaryStage.setOnCloseRequest(e -> System.exit(0));

@@ -3,6 +3,15 @@ File0=Spieler.java
 File1=FussballTestKlasse.java
 File2=Fussballfreundschaftsspiel.java
 File3=Freundschaftsspiel.java
+File4=Experiment.java
+
+[Box:  - Experiment]
+X=1179
+Y=397
+MinVis=0
+ShowParameter=4
+SortOrder=0
+ShowIcons=1
 
 [Box:  - Freundschaftsspiel]
 X=405
@@ -51,7 +60,4 @@ ShowObjectDiagram=0
 
 [Connections]
 V0=Fussballfreundschaftsspiel#Freundschaftsspiel#Implements####0#0#0###0#0
-
-[FInteractive]
-I0=
 
