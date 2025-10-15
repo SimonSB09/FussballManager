@@ -54,7 +54,7 @@ public class Renderer extends Application
   @Override
   public void start(Stage primaryStage) { 
     Pane root = new Pane();
-    Scene scene = new Scene(root, 443, 518);
+    Scene scene = new Scene(root);
     // start components
     
     teamADropDown.setLayoutX(dropDownAX);
@@ -129,8 +129,6 @@ public class Renderer extends Application
   @Override
   public void init()
   {
-   System.out.println("Calling init!");
-   
    // **********************************************************************
     // Mannschaft 1
     Trainer t1     = new Trainer("Juergen Klinsmann", 34, 9);
@@ -196,49 +194,64 @@ public class Renderer extends Application
          HBox nameBox = new HBox();
          nameBox.setSpacing(10);
          nameBox.setPadding(new Insets(15));
-         Label nameLabel = new Label("Alter");
+         Label nameLabel = new Label("Name");
          TextField nameInput = new TextField(newPlayer.getName());
+         nameInput.setOnAction((event) ->
+         {
+          newPlayer.setName(nameInput.getText());   //this works apparently since newPlayer is a field of Renderer
+                                                    //TODO: need to update the dropDown now
+         });
          nameBox.getChildren().addAll(nameLabel, nameInput);
          
          HBox alterBox = new HBox();
-         nameBox.setSpacing(10);
-         nameBox.setPadding(new Insets(15));
+         alterBox.setSpacing(10);
+         alterBox.setPadding(new Insets(15));
          Label alterLabel = new Label("Alter");
-         TextField alterInput = new TextField(Integer.toString(newPlayer.getAlter()));
+         Spinner<Integer> alterInput = new Spinner(0, 100, newPlayer.getAlter());
+         alterInput.setEditable(true);
+         alterInput.getEditor().setOnAction((event) ->
+         {
+          System.out.println("Spinner has been called!\n it got the value: " + alterInput.getValue());
+          newPlayer.setAlter(alterInput.getValue());
+         });
          alterBox.getChildren().addAll(alterLabel, alterInput);
          
-         //HBox nameBox = new HBox();
-         //nameBox.setSpacing(10);
-         //nameBox.setPadding(new Insets(15));
-         //Label nameLabel = new Label("Name");
-         //TextField nameInput = new TextField(newPlayer.getName());
-         //nameBox.getChildren().addAll(nameLabel, nameInput);
-         //
-         //HBox nameBox = new HBox();
-         //nameBox.setSpacing(10);
-         //nameBox.setPadding(new Insets(15));
-         //Label nameLabel = new Label("Name");
-         //TextField nameInput = new TextField(newPlayer.getName());
-         //nameBox.getChildren().addAll(nameLabel, nameInput);
-         //
-         //HBox nameBox = new HBox();
-         //nameBox.setSpacing(10);
-         //nameBox.setPadding(new Insets(15));
-         //Label nameLabel = new Label("Name");
-         //TextField nameInput = new TextField(newPlayer.getName());
-         //nameBox.getChildren().addAll(nameLabel, nameInput);
-                  
-         //String text = "";
-         //text += "Name: " + newPlayer.getName() + "\n";
-         //text += "Alter: " + newPlayer.getAlter() + "\n";
-         //text += "Stärke: " + Integer.toString(newPlayer.getStaerke()) + "\n";
-         //text += "Torschuss: " + Integer.toString(newPlayer.getTorschuss()) + "\n";
-         //text += "Motivation: " + Integer.toString(newPlayer.getMotivation()) + "\n";
-         //label.setText(text);
+         HBox staerkeBox = new HBox();
+         staerkeBox.setSpacing(10);
+         staerkeBox.setPadding(new Insets(15));
+         Label staerkeLabel = new Label("Stärke");
+         Spinner<Integer> staerkeInput = new Spinner(0, 10, newPlayer.getStaerke());
+         //staerkeInput.setOnAction((event) ->
+         //{
+         // newPlayer.setStaerke(staerkeInput.getValue());
+         //});
+         staerkeBox.getChildren().addAll(staerkeLabel, staerkeInput);
+         
+         HBox torschussBox = new HBox();
+         torschussBox.setSpacing(10);
+         torschussBox.setPadding(new Insets(15));
+         Label torschussLabel = new Label("Torschuss");
+         Spinner<Integer> torschussInput = new Spinner(0, 10, newPlayer.getTorschuss());
+         //torschussInput.setOnAction((event) ->
+         //{
+         // newPlayer.setTorschuss(torschussInput.getValue());
+         //});
+         torschussBox.getChildren().addAll(torschussLabel, torschussInput);
+         
+         HBox motivationBox = new HBox();
+         motivationBox.setSpacing(10);
+         motivationBox.setPadding(new Insets(15));
+         Label motivationLabel= new Label("Motivation");
+         Spinner<Integer> motivationInput = new Spinner(0, 10, newPlayer.getMotivation());
+         motivationBox.getChildren().addAll(motivationLabel, motivationInput);
          
          playerCard.getChildren().clear();        //TODO: make this more efficient
-         playerCard.getChildren().add(nameBox);
+         playerCard.getChildren().add(nameBox);   //TODO: add input callbacks
          playerCard.getChildren().add(alterBox);
+         playerCard.getChildren().add(staerkeBox);
+         playerCard.getChildren().add(torschussBox);
+         playerCard.getChildren().add(motivationBox);
+         
   }
 
 

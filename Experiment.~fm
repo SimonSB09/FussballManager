@@ -1,7 +1,7 @@
-object FGUIForm_1: TFXGUIForm
+object FGUIForm: TFXGUIForm
   Tag = 180
-  Left = 1276
-  Top = 216
+  Left = 634
+  Top = 227
   BorderIcons = [biSystemMenu]
   Caption = 'Experiment'
   ClientHeight = 223
@@ -41,34 +41,42 @@ object FGUIForm_1: TFXGUIForm
   MinWidth = 0
   showing = ''
   TextHeight = 15
-  object spinner1: TFXSpinner
-    Tag = 111
-    Left = 32
-    Top = 48
+  object button1: TFXButton
+    Tag = 105
+    Left = 64
+    Top = 56
     Width = 80
     Height = 24
-    Hint = 'spinner1'
+    Hint = 'button1'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -15
     Font.Name = 'Dialog'
     Font.Style = []
     Foreground = clBlack
-    Background = clWhite
-    JavaType = 'Spinner'
-    LayoutX = 32
-    LayoutY = 48
+    Background = clBtnFace
+    JavaType = 'Button'
+    LayoutX = 64
+    LayoutY = 56
     Disable = False
     Cache = False
     dragOver = ''
     PrefHeight = 24
     PrefWidth = 80
     SnapToPixel = False
-    Maximum = 10
-    Minimum = 0
-    InitialValue = 0
-    AmountToStepBy = 1
-    Editable = True
+    Alignment = CENTER
+    ContentDisplay = _CD_LEFT
+    EllipsisString = '...'
+    Underline = False
+    TextFill = 3355443
+    GraphicTextGap = 4
+    MnemonicParsing = False
+    Text = 'Button'
+    TextAlignment = _TA_LEFT
+    WrapText = False
+    action = 'button1_Action'
+    CancelButton = False
+    DefaultButton = False
   end
   object GNUgettextMarker: TGnuGettextComponentMarker
   end

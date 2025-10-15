@@ -7,6 +7,7 @@ import javafx.event.Event;
 import je.NumberField;
 import javafx.scene.text.*;
 import javafx.scene.text.Font;
+import javafx.event.*;
 
 /**
  *
@@ -18,7 +19,7 @@ import javafx.scene.text.Font;
 
 public class Experiment extends Application {
   // start attributes
-  private NumberField numberField1 = new NumberField();
+  private Button button1 = new Button();
   // end attributes
   
   public void start(Stage primaryStage) { 
@@ -26,12 +27,16 @@ public class Experiment extends Application {
     Scene scene = new Scene(root, 284, 262);
     // start components
     
-    numberField1.setLayoutX(32);
-    numberField1.setLayoutY(48);
-    numberField1.setPrefHeight(24);
-    numberField1.setPrefWidth(80);
-    numberField1.setFont(Font.font("Dialog", 11));
-    root.getChildren().add(numberField1);
+    button1.setLayoutX(64);
+    button1.setLayoutY(56);
+    button1.setPrefHeight(24);
+    button1.setPrefWidth(80);
+    button1.setText("Button");
+    button1.setOnAction(
+      (event) -> {button1_Action(event);} 
+    );
+    button1.setFont(Font.font("Dialog", 11));
+    root.getChildren().add(button1);
     // end components
     
     primaryStage.setOnCloseRequest(e -> System.exit(0));
@@ -47,6 +52,13 @@ public class Experiment extends Application {
   } // end of main
   
 
+
+
+
+  public void button1_Action(Event evt) {
+    // TODO add your code here
+    
+  } // end of button1_Action
 
   // end methods
 } // end of class Experiment

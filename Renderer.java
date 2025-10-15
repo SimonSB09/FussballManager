@@ -196,48 +196,68 @@ public class Renderer extends Application
          nameBox.setPadding(new Insets(15));
          Label nameLabel = new Label("Name");
          TextField nameInput = new TextField(newPlayer.getName());
+         nameInput.setOnAction((event) ->
+         {
+          newPlayer.setName(nameInput.getText());   //this works apparently since newPlayer is a field of Renderer
+                                                    //TODO: need to update the dropDown now
+         });
          nameBox.getChildren().addAll(nameLabel, nameInput);
          
          HBox alterBox = new HBox();
-         nameBox.setSpacing(10);
-         nameBox.setPadding(new Insets(15));
+         alterBox.setSpacing(10);
+         alterBox.setPadding(new Insets(15));
          Label alterLabel = new Label("Alter");
          Spinner<Integer> alterInput = new Spinner(0, 100, newPlayer.getAlter());
+         alterInput.setEditable(true);
+         alterInput.valueProperty().addListener((obs, oldValue, newValue) ->
+         {
+          newPlayer.setAlter(newValue);
+         });
          alterBox.getChildren().addAll(alterLabel, alterInput);
          
          HBox staerkeBox = new HBox();
-         nameBox.setSpacing(10);
-         nameBox.setPadding(new Insets(15));
+         staerkeBox.setSpacing(10);
+         staerkeBox.setPadding(new Insets(15));
          Label staerkeLabel = new Label("Stärke");
          Spinner<Integer> staerkeInput = new Spinner(0, 10, newPlayer.getStaerke());
+         staerkeInput.setEditable(true);
+         staerkeInput.valueProperty().addListener((obs, oldValue, newValue) ->
+         {
+          newPlayer.setStaerke(newValue);
+         });
          staerkeBox.getChildren().addAll(staerkeLabel, staerkeInput);
          
-        //HBox nameBox = new HBox();
-        //nameBox.setSpacing(10);
-        //nameBox.setPadding(new Insets(15));
-        //Label nameLabel = new Label("Name");
-        //TextField nameInput = new TextField(newPlayer.getName());
-        //nameBox.getChildren().addAll(nameLabel, nameInput);
-        //
-        //HBox nameBox = new HBox();
-        //nameBox.setSpacing(10);
-        //nameBox.setPadding(new Insets(15));
-        //Label nameLabel = new Label("Name");
-        //TextField nameInput = new TextField(newPlayer.getName());
-        //nameBox.getChildren().addAll(nameLabel, nameInput);
-                  
-         //String text = "";
-         //text += "Name: " + newPlayer.getName() + "\n";
-         //text += "Alter: " + newPlayer.getAlter() + "\n";
-         //text += "Stärke: " + Integer.toString(newPlayer.getStaerke()) + "\n";
-         //text += "Torschuss: " + Integer.toString(newPlayer.getTorschuss()) + "\n";
-         //text += "Motivation: " + Integer.toString(newPlayer.getMotivation()) + "\n";
-         //label.setText(text);
+         HBox torschussBox = new HBox();
+         torschussBox.setSpacing(10);
+         torschussBox.setPadding(new Insets(15));
+         Label torschussLabel = new Label("Torschuss");
+         Spinner<Integer> torschussInput = new Spinner(0, 10, newPlayer.getTorschuss());
+         torschussInput.setEditable(true);
+         torschussInput.valueProperty().addListener((obs, oldValue, newValue) ->
+         {
+          newPlayer.setTorschuss(newValue);
+         });
+         torschussBox.getChildren().addAll(torschussLabel, torschussInput);
+         
+         HBox motivationBox = new HBox();
+         motivationBox.setSpacing(10);
+         motivationBox.setPadding(new Insets(15));
+         Label motivationLabel= new Label("Motivation");
+         Spinner<Integer> motivationInput = new Spinner(0, 10, newPlayer.getMotivation());
+         motivationInput.setEditable(true);
+         motivationInput.valueProperty().addListener((obs, oldValue, newValue) ->
+         {
+          newPlayer.setMotivation(newValue);
+         });
+         motivationBox.getChildren().addAll(motivationLabel, motivationInput);
          
          playerCard.getChildren().clear();        //TODO: make this more efficient
          playerCard.getChildren().add(nameBox);   //TODO: add input callbacks
          playerCard.getChildren().add(alterBox);
          playerCard.getChildren().add(staerkeBox);
+         playerCard.getChildren().add(torschussBox);
+         playerCard.getChildren().add(motivationBox);
+         
   }
 
 
